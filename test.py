@@ -79,7 +79,7 @@ if __name__ == '__main__':
 		pred = normPRED(pred)
              
 		frame_time = time.time() - start_time  # Time for one frame
-                print(frame_time)
+		print(frame_time)
 		# save results to test_results folder
 		save_output(img_name_list[i_test],pred,prediction_dir)
 	
