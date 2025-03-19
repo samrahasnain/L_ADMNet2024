@@ -54,7 +54,9 @@ if __name__ == '__main__':
 	# --------- Define the model ---------
 	print("...load ADMNet...")
 	net = ADMNet()
-	net.load_state_dict(torch.load(model_dir))
+	net.load_state_dict(torch.load(model_dir, weights_only=True))
+
+	#net.load_state_dict(torch.load(model_dir))
 	if torch.cuda.is_available():
 		net.cuda()
 	net.eval()
