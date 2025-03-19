@@ -72,14 +72,12 @@ if __name__ == '__main__':
 		else:
 			inputs_test = Variable(inputs_test)
                
-                if torch.cuda.is_available():
-                    torch.cuda.synchronize()
+
                 start_time = time.time()
 
                 d1, d2, d3, d4, d5 = net(inputs_test)
 
-		if torch.cuda.is_available():
-                    torch.cuda.synchronize()
+
                 frame_time = time.time() - start_time
 
                 tqdm.write(f"Frame time: {frame_time:.6f} seconds")  # Ensure print is visible
