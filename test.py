@@ -78,7 +78,7 @@ if __name__ == '__main__':
 
                 d1, d2, d3, d4, d5 = net(inputs_test)
 
-                if torch.cuda.is_available():
+		if torch.cuda.is_available():
                     torch.cuda.synchronize()
                 frame_time = time.time() - start_time
 
