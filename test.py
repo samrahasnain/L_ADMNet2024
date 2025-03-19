@@ -3,7 +3,7 @@ from skimage import io
 from torch.autograd import Variable
 from torch.utils.data import DataLoader
 from torchvision import transforms
-
+import time
 from PIL import Image
 import glob
 from tqdm import tqdm
@@ -41,7 +41,7 @@ def save_output(image_name,pred,d_dir):
 
 if __name__ == '__main__':
 	# --------- Define the address and image format ---------
-	image_dir = ""
+	image_dir = "/kaggle/input/duts-saliency-detection-dataset/DUTS-TE/DUTS-TE-Image"
 	prediction_dir = ""
 	model_dir = "./model_save/ADMNet.pth"
 	
@@ -69,13 +69,19 @@ if __name__ == '__main__':
 			inputs_test = Variable(inputs_test.cuda())
 		else:
 			inputs_test = Variable(inputs_test)
-	
+	        if torch.cuda.is_available():
+                    torch.cuda.synchronize()
+		start_time = time.time()
+
 		d1, d2, d3, d4, d5 = net(inputs_test)
 	
 		# normalization
 		pred = d1[:,0,:,:]
 		pred = normPRED(pred)
-	
+		if torch.cuda.is_available():
+                    torch.cuda.synchronize()
+		frame_time = time.time() - start_time  # Time for one frame
+                print(frame_time)
 		# save results to test_results folder
 		save_output(img_name_list[i_test],pred,prediction_dir)
 	
