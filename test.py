@@ -69,8 +69,8 @@ if __name__ == '__main__':
 			inputs_test = Variable(inputs_test.cuda())
 		else:
 			inputs_test = Variable(inputs_test)
-	        if torch.cuda.is_available():
-                    torch.cuda.synchronize()
+                if torch.cuda.is_available():
+                        torch.cuda.synchronize()
 		start_time = time.time()
 
 		d1, d2, d3, d4, d5 = net(inputs_test)
@@ -78,8 +78,8 @@ if __name__ == '__main__':
 		# normalization
 		pred = d1[:,0,:,:]
 		pred = normPRED(pred)
-		if torch.cuda.is_available():
-                    torch.cuda.synchronize()
+                if torch.cuda.is_available():
+                        torch.cuda.synchronize()
 		frame_time = time.time() - start_time  # Time for one frame
                 print(frame_time)
 		# save results to test_results folder
