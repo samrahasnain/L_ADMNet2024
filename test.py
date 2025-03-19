@@ -43,7 +43,7 @@ if __name__ == '__main__':
 	# --------- Define the address and image format ---------
 	image_dir = "/kaggle/input/duts-saliency-detection-dataset/DUTS-TE/DUTS-TE-Image"
 	prediction_dir = ""
-	model_dir = "./model_save/ADMNet.pth"
+	model_dir = "/kaggle/working/L_ADMNet2024/model_save/ADMNet.pth"
 	
 	img_name_list = glob.glob(image_dir + '*.jpg')
 	
