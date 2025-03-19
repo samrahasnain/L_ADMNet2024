@@ -45,7 +45,7 @@ if __name__ == '__main__':
 	prediction_dir = ""
 	model_dir = "/kaggle/working/L_ADMNet2024/model_save/ADMNet.pth"
 	
-	img_name_list = glob.glob(image_dir + '*.jpg')
+	img_name_list = glob.glob(image_dir + '/*.jpg')
 	
 	# --------- Load the data ---------
 	test_salobj_dataset = SalObjDataset(img_name_list = img_name_list, lbl_name_list = [],transform=transforms.Compose([Rescale(368),ToTensor(flag=0)]))
